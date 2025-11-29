@@ -1,0 +1,80 @@
+<!-- Browser Console Quiz Game -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Quiz Game</title>
+</head>
+<body>
+    <h1>Console Quiz Game</h1>
+    <p>Open your browser console to play the quiz!</p>
+
+<script>
+// Array to store quiz questions and answers
+const quizQuestions = [
+  {
+    question: "What is the capital of France?",
+    answer: "paris"
+  },
+  {
+    question: "Which planet is closest to the sun?",
+    answer: "mercury"
+  },
+  {
+    question: "What is 2 + 2?",
+    answer: "4"
+  },
+  {
+    question: "What is the largest ocean on Earth?",
+    answer: "pacific"
+  },
+  {
+    question: "How many continents are there?",
+    answer: "7"
+  }
+];
+
+// Function to run the quiz
+function runQuiz() {
+  let score = 0;
+
+  for (let i = 0; i < quizQuestions.length; i++) {
+    const currentQuestion = quizQuestions[i].question;
+    const correctAnswer = quizQuestions[i].answer;
+
+    const userAnswer = prompt(currentQuestion);
+
+    if (userAnswer === null) {
+      alert("Quiz cancelled!");
+      return;
+    }
+
+    const normalizedAnswer = userAnswer.toLowerCase().trim();
+
+    if (normalizedAnswer === correctAnswer) {
+      alert("✓ Correct! Your answer: " + normalizedAnswer);
+      score++;
+    } else {
+      alert("✗ Incorrect! Your answer: " + normalizedAnswer + "\nCorrect answer: " + correctAnswer);
+    }
+  }
+
+  // Final Score Message with celebration logic
+  if (score === quizQuestions.length) {
+    alert("🎉🎉 CONGRATULATIONS! 🎉🎉\nFULL SCORE!! " + score + " / " + quizQuestions.length + "\nYou're a genius! 🥳✨");
+  } 
+  else if (score <= 3) {
+    alert("😅 Quiz Complete!\nYour score: " + score + " / " + quizQuestions.length + "\nKeep practicing, you’ll get better! 💪");
+  } 
+  else {
+    alert("👍 Nice Job!\nYour score: " + score + " / " + quizQuestions.length + "\nAlmost perfect! ⭐");
+  }
+}
+
+// Run the quiz
+runQuiz();
+</script>
+</body>
+</html>
+
